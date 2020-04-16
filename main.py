@@ -60,31 +60,30 @@ def product_detail(id):
 		cursor.close() 
 		conn.close()
 
-# @app.route('/updateProduct', methods=['PUT'])
-# def update_product():
-# 	try:
-# 		_json = request.json
-# 		_product_id = _json['product_id']
-# 		_product_name = _json['product_name']
-# 		_active = _json['active']
-#         if _product_id and _product_name and _active and request.method == 'PUT':
-#         # if _product_id and _product_name and _active and request.method == 'PUT':			
-# 			sqlQuery = "UPDATE product SET product_name=%s, active=%s WHERE product_id=%s"
-# 			bindData = (_product_name, _active, _product_id)
-# 			conn = mysql.connect()
-# 			cursor = conn.cursor()
-# 			cursor.execute(sqlQuery, bindData)
-# 			conn.commit()
-# 			respone = jsonify('Product updated successfully!')
-# 			respone.status_code = 200
-# 			return respone
-# 		else:
-# 			return not_found()	
-#                 except Exception as e:
-# 		 print(e)
-# 	        finally:
-# 		 cursor.close() 
-# 		 conn.close()
+@app.route('/updateProduct', methods=['PUT'])
+def update_product():
+	try:
+		_json = request.json
+		_product_id = _json['product_id']
+		_product_name = _json['product_name']
+		_active = _json['active']
+		if _product_id and _product_name and _active and request.method == 'PUT':
+			sqlQuery = "UPDATE product SET product_name=%s, active=%s WHERE product_id=%s"
+			bindData = (_product_name, _active, _product_id)
+			conn = mysql.connect()
+			cursor = conn.cursor()
+			cursor.execute(sqlQuery, bindData)
+			conn.commit()
+			respone = jsonify('Product updated successfully!')
+			respone.status_code = 200
+			return respone
+		else:
+			return not_found()
+	except Exception as e:
+		print(e)
+	finally:
+		cursor.close() 
+		conn.close()
 
 @app.route('/productDelete/<int:id>', methods=['DELETE'])
 def delete_product(id):
