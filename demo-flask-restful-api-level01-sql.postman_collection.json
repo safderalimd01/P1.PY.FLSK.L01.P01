@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "61fc5554-bf14-4093-a1ba-86c59e1448f7",
+		"name": "demo-flask-restful-api-level01-sql",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "productList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/productList",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"productList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"product_name\": \"APIs for Dummies\",\n\t\t\"active\": 1\n\t}\n]"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/addProduct",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"addProduct"
+					],
+					"query": [
+						{
+							"key": "active",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "product_name",
+							"value": "APIs for Dummies",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "productDetail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/productDetail/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"productDetail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "productDelete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/productDelete/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"productDelete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateProduct",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"prduct_id\": \"2\",\n\t\t\"product_name\": \"APIs for Dummies\",\n\t\t\"active\": 1\n\t}\n]"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/addProduct?active=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"addProduct"
+					],
+					"query": [
+						{
+							"key": "prduct_id",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "product_name",
+							"value": "\"Book for me\"",
+							"disabled": true
+						},
+						{
+							"key": "active",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

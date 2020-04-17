@@ -6,3 +6,9 @@ CREATE TABLE `product` (
   PRIMARY KEY (`product_id`),
   UNIQUE KEY `product_name_UNIQUE` (`product_name`)
 );
+
+
+# load initial data
+insert into product (product_name, active) values ('Python for Dummies', 1);
+
+insert into product (product_name, active) values ('APIs for Dummies', 1);

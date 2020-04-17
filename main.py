@@ -34,8 +34,8 @@ def product_listing():
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
 		cursor.execute("SELECT product_id, product_name, active FROM product")
-		empRows = cursor.fetchall()
-		respone = jsonify(empRows)
+		productRows = cursor.fetchall()
+		respone = jsonify(productRows)
 		respone.status_code = 200
 		return respone
 	except Exception as e:
@@ -50,8 +50,8 @@ def product_detail(id):
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
 		cursor.execute("SELECT product_id, product_name, active FROM product WHERE product_id =%s", id)
-		empRow = cursor.fetchone()
-		respone = jsonify(empRow)
+		productRow = cursor.fetchone()
+		respone = jsonify(productRow)
 		respone.status_code = 200
 		return respone
 	except Exception as e:
@@ -64,11 +64,11 @@ def product_detail(id):
 def update_product():
 	try:
 		_json = request.json
-		_product_id = _json['product_id']
 		_product_name = _json['product_name']
 		_active = _json['active']
-		if _product_id and _product_name and _active and request.method == 'PUT':
-			sqlQuery = "UPDATE product SET product_name=%s, active=%s WHERE product_id=%s"
+		_product_id = _json['product_id']
+		if _product_name and _product_id and request.method == 'PUT':			
+			sqlQuery = "UPDATE product set product_name=%s, active=%s where product_id = %s"
 			bindData = (_product_name, _active, _product_id)
 			conn = mysql.connect()
 			cursor = conn.cursor()
@@ -84,7 +84,7 @@ def update_product():
 	finally:
 		cursor.close() 
 		conn.close()
-
+		
 @app.route('/productDelete/<int:id>', methods=['DELETE'])
 def delete_product(id):
 	try:
