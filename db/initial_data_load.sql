@@ -129,3 +129,20 @@ where not exists (select 1
                     where invoice_number = 'INV-003'
                     and product_id = (Select product_id from product where product_name = 'MySQL for Dummies')
 				);                      
+                
+
+-- load initial data for user table
+insert into app_user (user_name, login_id, hashed_password) 
+select 'Bill Gates'
+	,'bill.g@mydomain.com'
+    ,'dfsdfdsfdsf'
+from dual
+where not exists (select 1 from app_user where login_id = 'bill.g@mydomain.com');                
+
+insert into app_user (user_name, login_id, hashed_password) 
+select 'Jeff Bezos'
+	,'jeff.b@mydomain.com'
+    ,'xcczxczxc'
+from dual
+where not exists (select 1 from app_user where login_id = 'jeff.b@mydomain.com');              
+                
