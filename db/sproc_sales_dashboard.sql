@@ -19,7 +19,7 @@ OUT oparam_err_msg varchar(1000))
 BEGIN 
 
 /********************************************************************************
--- use this code to test your client delete stored procedure:
+-- use this code to test your sales dashboard stored proc:
 set @iparam_start_date = '2020-01-01';
 set @iparam_end_date = '2020-12-31';
 
