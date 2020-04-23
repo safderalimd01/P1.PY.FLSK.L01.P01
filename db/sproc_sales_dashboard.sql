@@ -1,10 +1,10 @@
--- stored procedure to get details of a given client
+-- stored procedure to get sales dashboard data
 
 delimiter //
-DROP PROCEDURE IF EXISTS sproc_sales_dashbaord//
+DROP PROCEDURE IF EXISTS sproc_sales_dashboard//
 
 delimiter //
-CREATE PROCEDURE sproc_sales_dashbaord(
+CREATE PROCEDURE sproc_sales_dashboard(
 IN iparam_start_date date,
 IN iparam_end_date date,
 
@@ -23,7 +23,7 @@ BEGIN
 set @iparam_start_date = '2020-01-01';
 set @iparam_end_date = '2020-12-31';
 
-call sproc_sales_dashbaord
+call sproc_sales_dashboard
 (@iparam_start_date
 ,@iparam_end_date
 
@@ -134,4 +134,4 @@ END //
 DELIMITER ;
 
 -- use this if u want to provide execute access to other mysql user id
--- GRANT EXECUTE ON PROCEDURE sproc_sales_dashbaord to '<my sql user id>';	
+-- GRANT EXECUTE ON PROCEDURE sproc_sales_dashboard to '<my sql user id>';	
