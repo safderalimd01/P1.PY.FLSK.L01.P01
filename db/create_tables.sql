@@ -49,5 +49,19 @@ CREATE TABLE IF NOT EXISTS `sales` (
     REFERENCES `client` (`client_id`),
   CONSTRAINT `fk_02_sales`
     FOREIGN KEY (`product_id`)
-    REFERENCES `product` (`product_id`)  
+    REFERENCES `product` (`product_id`)
+);
+
+-- create user table
+-- in real production environment there are lot more columns than what we have here
+CREATE TABLE IF NOT EXISTS `app_user` (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(100) NOT NULL,
+  `login_id` varchar(100) NOT NULL,
+  `hashed_password` varchar(500) NOT NULL,
+  `user_status` tinyint NOT NULL DEFAULT '1',
+  `created_date` datetime NOT NULL DEFAULT now(),
+  `modified_date` datetime NOT NULL DEFAULT now(),
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `uix_01_app_user` (`login_id`)
 );
