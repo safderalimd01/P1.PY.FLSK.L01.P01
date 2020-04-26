@@ -9,11 +9,11 @@ def add_product():
 	try:
 		_json = request.json
 		_product_name = _json['product_name']
-		_active = _json['active']
+		_product_status = _json['product_status']
 		conn = mysql.connect()
-		if _product_name and _active and request.method == 'POST':
-			sqlQuery = "INSERT INTO product(product_name, active) VALUES(%s, %s)"
-			bindData = (_product_name, _active)
+		if _product_name and _product_status and request.method == 'POST':
+			sqlQuery = "INSERT INTO product(product_name, product_status) VALUES(%s, %s)"
+			bindData = (_product_name, _product_status)
 
 			cursor = conn.cursor()
 			cursor.execute(sqlQuery, bindData)
@@ -33,7 +33,7 @@ def product_listing():
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
-		cursor.execute("SELECT product_id, product_name, active FROM product")
+		cursor.execute("SELECT product_id, product_name, product_status FROM product")
 		productRows = cursor.fetchall()
 		close_connection(conn, cursor)
 		respone = jsonify(productRows)
@@ -47,12 +47,16 @@ def product_detail(id):
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor(pymysql.cursors.DictCursor)
-		cursor.execute("SELECT product_id, product_name, active FROM product WHERE product_id =%s", id)
-		productRow = cursor.fetchone()
-		close_connection(conn, cursor)
-		respone = jsonify(productRow)
-		respone.status_code = 200
-		return respone
+		check_record_exist = cursor.execute("SELECT * FROM product WHERE product_id=%s and product_status=1", (id,))
+		if check_record_exist:
+			cursor.execute("SELECT product_id, product_name, product_status FROM product WHERE product_id =%s", id)
+			productRow = cursor.fetchone()
+			close_connection(conn, cursor)
+			respone = jsonify(productRow)
+			respone.status_code = 200
+			return respone
+		else:
+			return { "message": "Record not found" }, 404
 	except Exception as e:
 		return {"error": str(e)}
 
@@ -61,11 +65,11 @@ def update_product():
 	try:
 		_json = request.json
 		if _json['product_name'] and _json['product_id'] and request.method == 'PUT':
-			sqlQuery = "UPDATE product set product_name=%s, active=%s where product_id = %s"
+			sqlQuery = "UPDATE product set product_name=%s, product_status=%s where product_id = %s"
 			_product_name = _json['product_name']
-			_active = _json['active']
+			_product_status = _json['product_status']
 			_product_id = _json['product_id']
-			bindData = (_product_name, _active, _product_id)
+			bindData = (_product_name, _product_status, _product_id)
 			conn = mysql.connect()
 			cursor = conn.cursor()
 			cursor.execute(sqlQuery, bindData)
@@ -84,12 +88,16 @@ def delete_product(id):
 	try:
 		conn = mysql.connect()
 		cursor = conn.cursor()
-		cursor.execute("DELETE FROM product WHERE product_id =%s", (id,))
-		conn.commit()
-		close_connection(conn, cursor)
-		respone = jsonify('Product deleted successfully!')
-		respone.status_code = 200
-		return respone
+		check_record_exist = cursor.execute("SELECT * FROM product WHERE product_id=%s", (id,))
+		if check_record_exist:
+			cursor.execute("DELETE FROM product WHERE product_id =%s", (id,))
+			conn.commit()
+			close_connection(conn, cursor)
+			respone = jsonify('Product deleted successfully!')
+			respone.status_code = 200
+			return respone
+		else:
+			return { "message": "Record not found" }, 404
 	except Exception as e:
 		return {"error": str(e)}
 

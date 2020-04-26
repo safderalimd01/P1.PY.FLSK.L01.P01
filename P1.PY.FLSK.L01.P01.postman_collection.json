@@ -45,7 +45,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"product_name\": \"Wings of fire\",\n\t\"active\": 1\n}\n"
+					"raw": "{\n\t\"product_name\": \"python fundamentals\",\n\t\"product_status\": 1\n}\n"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:5000/addProduct",
@@ -86,7 +86,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/productDetail/5",
+					"raw": "http://127.0.0.1:5000/productDetail/1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -97,7 +97,7 @@
 					"port": "5000",
 					"path": [
 						"productDetail",
-						"5"
+						"1"
 					]
 				}
 			},
@@ -113,7 +113,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/productDelete/5",
+					"raw": "http://127.0.0.1:5000/productDelete/8",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -124,7 +124,7 @@
 					"port": "5000",
 					"path": [
 						"productDelete",
-						"5"
+						"8"
 					]
 				}
 			},
@@ -144,7 +144,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"product_id\": 5,\n\t\"product_name\": \"PHP fundamentals\",\n\t\"active\": 1\n}"
+					"raw": "{\n\t\"product_id\": 8,\n\t\"product_name\": \"python3 fundamentals\",\n\t\"product_status\": 1\n}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:5000/updateProduct",
