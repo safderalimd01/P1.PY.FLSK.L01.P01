@@ -64,22 +64,27 @@ def product_detail(id):
 def update_product():
 	try:
 		_json = request.json
-		if _json['product_name'] and _json['product_id'] and request.method == 'PUT':
-			sqlQuery = "UPDATE product set product_name=%s, product_status=%s where product_id = %s"
-			_product_name = _json['product_name']
-			_product_status = _json['product_status']
-			_product_id = _json['product_id']
-			bindData = (_product_name, _product_status, _product_id)
-			conn = mysql.connect()
-			cursor = conn.cursor()
-			cursor.execute(sqlQuery, bindData)
-			conn.commit()
-			close_connection(conn, cursor)
-			respone = jsonify('Product updated successfully!')
-			respone.status_code = 200
-			return respone
+		_product_name = _json['product_name']
+		_product_status = _json['product_status']
+		_product_id = _json['product_id']
+		conn = mysql.connect()
+		cursor = conn.cursor()
+		check_record_exist = cursor.execute("SELECT * FROM product WHERE product_id=%s", (_product_id,))
+		if check_record_exist:
+			if _json['product_name'] and _json['product_id'] and request.method == 'PUT':
+				sqlQuery = "UPDATE product set product_name=%s, product_status=%s where product_id = %s"
+				bindData = (_product_name, _product_status, _product_id)
+				cursor.execute(sqlQuery, bindData)
+				conn.commit()
+				close_connection(conn, cursor)
+				respone = jsonify('Product updated successfully!')
+				respone.status_code = 200
+				return respone
+			else:
+				return not_found()
 		else:
-			return not_found()
+			close_connection(conn, cursor)
+			return { "message": "Record not found" }, 404
 	except Exception as e:
 		return {"error": str(e)}
 
