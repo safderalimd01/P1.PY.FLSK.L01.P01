@@ -1,3 +1,5 @@
+use tansy_cloud;
+
 -- load initial data for product table
 -- assuming its a book store
 insert into product (product_name)
