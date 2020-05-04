@@ -1,4 +1,6 @@
 # FOR UBUNTU (use ubuntu command prompt) 
+## Required tools: you must have mysql workbecnh, mysql local server and postman tools already installed on your computer
+
 ## STEP 1: install python
 #### NOTE: type below command in ubuntu command prompt
 sudo apt install python3.7 python3-venv python3.7-venv
@@ -20,7 +22,10 @@ source env_project1/bin/activate
 #### STEP 2.5:Install the dependencies
 pip install -r requirements.txt
 
-#### STEP 2.6:Run Flask App in development mode
+#### STEP 2.6:update mysql login credentials
+manually edit config.py file from current folder and update your mysql login id, password and local host
+
+#### STEP 2.7:Run Flask App in development mode
 flask run
 
 ## STEP 3: mysql
