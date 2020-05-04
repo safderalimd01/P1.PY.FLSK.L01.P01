@@ -1,5 +1,5 @@
 # FOR UBUNTU (use ubuntu command prompt) 
-## Required tools: you must have mysql workbecnh, mysql local server and postman tools already installed on your computer
+Required tools: you must have mysql workbench, mysql local server and postman tools already installed on your computer
 
 ## STEP 1: install python
 #### NOTE: type below command in ubuntu command prompt
