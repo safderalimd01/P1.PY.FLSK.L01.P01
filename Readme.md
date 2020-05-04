@@ -23,5 +23,15 @@ pip install -r requirements.txt
 #### STEP 2.6:Run Flask App in development mode
 flask run
 
+## STEP 3: mysql
+#### STEP 3.1: start mysql workbench
+#### STEP 3.2: open create_tables.sql in workbench, file from db folder that exists in the repo that you downloaded
+#### STEP 3.3: execute create_tables.sql in workbench
+#### STEP 3.4: to load initial data execute initial_data_load.sql from same db folder
+
+## STEP 4: postman
+#### STEP 4.1: open postman and import postman file from repo folder that you downloaded from github using gitclone command
+#### STEP 4.2: execute avilable api calls from this postman project
+
 
 
