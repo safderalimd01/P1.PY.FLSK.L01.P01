@@ -8,7 +8,7 @@ Required tools: you must have mysql workbench, mysql local server and postman to
 ### STEP 2: start flask app
 
 ###### STEP 2.1: download api code from github
-```git clone https://githubcom/safderalimd01/P1```
+```git clone https://github.com/safderalimd01/P1.PY.FLSK.L01.P01.git```
 
 ###### STEP 2.2: change working directory in command line tool
 ```cd P1.PY.FLSK.L01.P01```
