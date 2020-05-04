@@ -30,7 +30,7 @@ flask run
 #### STEP 3.4: to load initial data execute initial_data_load.sql from same db folder
 
 ## STEP 4: postman
-#### STEP 4.1: open postman and import postman file from repo folder that you downloaded from github using gitclone command
+#### STEP 4.1: open postman and import postman file(P1.PY.FLSK.L01.P01.postman_collection.json) from repo folder that you downloaded from github using gitclone command
 #### STEP 4.2: execute avilable api calls from this postman project
 
 
