@@ -2,15 +2,15 @@
 Required tools: you must have mysql workbench, mysql local server and postman tools already installed on your computer
 #### NOTE: type below command in ubuntu command prompt
 
-## STEP 1: install python
+### STEP 1: install python
 ```sudo apt install python3.7 python3-venv python3.7-venv```
 
-## STEP 2: start flask app
+### STEP 2: start flask app
 
-#### STEP 2.1: download api code from github
+###### STEP 2.1: download api code from github
 ```git clone https://githubcom/safderalimd01/P1```
 
-#### STEP 2.2: change working directory in command line tool
+###### STEP 2.2: change working directory in command line tool
 ```cd P1.PY.FLSK.L01.P01```
 
 #### STEP 2.3: Create environment with python 3.7
