@@ -1,6 +1,6 @@
 ### ================================================ START UBUNTU =============================================================
 # STEP 1: start flask app
-type below commands in ubuntu command prompt
+NOTE: type below commands in ubuntu command prompt
 
 ### get api code to your computer, clone git repo
 git clone https://github.com/safderalimd01/P1.PY.FLSK.L01.P01.git
